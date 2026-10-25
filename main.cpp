@@ -5,6 +5,8 @@
 #include <iomanip>
 #include <list>
 #include "Goat.h"
+#include <algorithm>
+#include <string>
 using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25;
@@ -13,6 +15,7 @@ int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
+void find_goat(list<Goat> trip, string name);
 int main_menu();
 
 int main() {
@@ -35,7 +38,8 @@ int main() {
     int tripSize = rand() % 8 + 8;
     list<Goat> trip;
     int age;
-    string name, color;
+    string name;
+    string color;
     for (int i = 0; i < tripSize; i++) {
         age = rand() % MAX_AGE;  // defined in Goat.h
         name = names[rand() % SZ_NAMES];
@@ -60,6 +64,10 @@ int main() {
                 cout << "Displaying goat data.\n";
                 display_trip(trip);
                 break;
+            case 4:
+                cout << "Enter Goat Name.\n";
+                cin >> name;
+                find_goat(trip, name);
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -76,7 +84,8 @@ int main_menu() {
     cout << "[1] Add a goat\n";
     cout << "[2] Delete a goat\n";
     cout << "[3] List goats\n";
-    cout << "[4] Quit\n";
+    cout << "[4] See if Goat exists\n";
+    cout << "[5] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
@@ -127,4 +136,16 @@ int select_goat(list<Goat> trp) {
         cin >> input;
     }
     return input;
+}
+
+void find_goat(list<Goat> trip, string name){
+    auto it = find(trip.begin(),trip.end(), name);
+
+    if(it != trip.end()){
+        cout << "The goat " << name << " does exist!" << endl;
+        }
+    else{
+        cout << "The goat " << name << " does not exist!" << endl;
+    }
+
 }
