@@ -56,7 +56,7 @@ int main() {
     
     // Goat Manager 3001 Engine
     int sel = main_menu();
-    while (sel != 7) {
+    while (sel != 8) {
         switch (sel) {
             case 1:
                 cout << "Adding a goat.\n";
@@ -81,6 +81,9 @@ int main() {
                 break;
             case 6:
                 reverseGoat(trip);
+            case 7:
+                oldestGoat(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -100,11 +103,13 @@ int main_menu() {
     cout << "[4] See if Goat exists\n";
     cout << "[5] Find Size of List\n";
     cout << "[6] Reverse Goats\n";
-    cout << "[7] Quit\n";
+    cout << "[7] Oldest Goat\n";
+    cout << "[8] Youngest Goat\n";
+    cout << "[8] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
-    while (choice < 1 || choice > 8) {
+    while (choice < 1 || choice > 9) {
         cout << "Invalid, again --> ";
         cin >> choice;
     }
@@ -193,9 +198,12 @@ void oldestGoat(list<Goat> &trip){
     auto it = max_element(trip.begin(),trip.end(), 
         [](const Goat& a, const Goat& b){
 
-        return a.get_age() < b.get_age()
+            return a.get_age() < b.get_age();
 
-    )};
+    });
+
+    cout << "Oldest Goat Name: " << it->get_name() << endl;
+    cout << "Oldest Goat Age: " << it->get_age() << endl;
 }
 
 void youngestGoat(list<Goat> &trip){
