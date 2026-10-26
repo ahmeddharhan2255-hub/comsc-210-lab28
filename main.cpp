@@ -22,6 +22,7 @@ void reverseGoat(list<Goat> &trip);
 void oldestGoat(list<Goat> &trip);
 void youngestGoat(list<Goat> &trip);
 void allAdults(list<Goat> &trip);
+void noBabies(list<Goat> &trip);
     
 int main_menu();
 
@@ -92,7 +93,8 @@ int main() {
                 allAdults(trip);
                 break;
             case 10:
-
+                noBabies(trip);
+                break;
             case 11:
 
             default:
@@ -117,7 +119,7 @@ int main_menu() {
     cout << "[7] Oldest Goat\n";
     cout << "[8] Youngest Goat\n";
     cout << "[9] Check if all goats are adults\n";
-    cout << "[10]      \n";
+    cout << "[10] No babies \n";
     cout << "[11]      \n";
     cout << "[12] Quit\n";
     cout << "Choice --> ";
@@ -245,4 +247,14 @@ void allAdults(list<Goat> &trip){
 
 }
 
-void noBabies(lis)
+void noBabies(list<Goat> &trip){
+        bool result = none_of(trip.begin(), trip.end(),
+        [](const Goat& gt){
+            return gt.get_age() < 3;
+    });
+
+    if(result)
+        cout << "There are no babies" << endl;
+    else
+        cout << "There are  babies" << endl;   
+}
