@@ -50,7 +50,7 @@ int main() {
     
     // Goat Manager 3001 Engine
     int sel = main_menu();
-    while (sel != 4) {
+    while (sel != 5) {
         switch (sel) {
             case 1:
                 cout << "Adding a goat.\n";
@@ -68,6 +68,7 @@ int main() {
                 cout << "Enter Goat Name.\n";
                 cin >> name;
                 find_goat(trip, name);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -89,7 +90,7 @@ int main_menu() {
     cout << "Choice --> ";
     int choice;
     cin >> choice;
-    while (choice < 1 || choice > 4) {
+    while (choice < 1 || choice > 6) {
         cout << "Invalid, again --> ";
         cin >> choice;
     }
@@ -139,13 +140,21 @@ int select_goat(list<Goat> trp) {
 }
 
 void find_goat(list<Goat> trip, string name){
-    auto it = find(trip.begin(),trip.end(), name);
+    bool found = false;
 
-    if(it != trip.end()){
-        cout << "The goat " << name << " does exist!" << endl;
+    for (auto gt: trip){
+        if (gt.get_name() == name){
+            found = true;
+            break; 
         }
-    else{
-        cout << "The goat " << name << " does not exist!" << endl;
+
     }
 
+    if (found){
+        cout << name <<  " exists!" << endl;
+    }
+    else{
+        cout << name << " doesn't exist" << endl;
+    }
 }
+        
