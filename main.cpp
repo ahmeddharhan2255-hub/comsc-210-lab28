@@ -19,6 +19,9 @@ void display_trip(list<Goat> trip);
 void find_goat(list<Goat> trip, string name);
 void size(list<Goat> trip);
 void reverseGoat(list<Goat> &trip);
+void oldestGoat(list<Goat> &trip);
+void youngestGoat(list<Goat> &trip);
+    
 int main_menu();
 
 int main() {
@@ -179,4 +182,22 @@ void size(list<Goat> trp){
         
 void reverseGoat(list<Goat> &trip){
     reverse(trip.begin(),trip.end()); 
+}
+
+void oldestGoat(list<Goat> &trip){
+    if (trip.empty()){
+        cout << "No goats in list" << endl;
+        return;
+    }
+
+    auto it = max_element(trip.begin(),trip.end(), 
+        [](const Goat& a, const Goat& b){
+
+        return a.get_age() < b.get_age()
+
+    )};
+}
+
+void youngestGoat(list<Goat> &trip){
+
 }
