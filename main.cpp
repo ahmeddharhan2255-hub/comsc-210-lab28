@@ -23,7 +23,7 @@ void oldestGoat(list<Goat> &trip);
 void youngestGoat(list<Goat> &trip);
 void allAdults(list<Goat> &trip);
 void noBabies(list<Goat> &trip);
-    
+void goatNames(list<Goat> &trip);
 int main_menu();
 
 int main() {
@@ -83,6 +83,7 @@ int main() {
                 break;
             case 6:
                 reverseGoat(trip);
+                break;
             case 7:
                 oldestGoat(trip);
                 break;
@@ -120,12 +121,12 @@ int main_menu() {
     cout << "[8] Youngest Goat\n";
     cout << "[9] Check if all goats are adults\n";
     cout << "[10] No babies \n";
-    cout << "[11]      \n";
+    cout << "[11] Display Goat Names \n";
     cout << "[12] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
-    while (choice < 1 || choice > 13) {
+    while (choice < 1 || choice > 12) {
         cout << "Invalid, again --> ";
         cin >> choice;
     }
@@ -257,4 +258,11 @@ void noBabies(list<Goat> &trip){
         cout << "There are no babies" << endl;
     else
         cout << "There are  babies" << endl;   
+}
+
+void goatNames(list<Goat> &trip){
+    for_each(trip.begin(),trip.end(),
+        [](const Goat& gt){
+            cout << gt.get_name() << endl;
+        });
 }
