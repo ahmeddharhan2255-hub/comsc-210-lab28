@@ -18,6 +18,7 @@ void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
 void find_goat(list<Goat> trip, string name);
 void size(list<Goat> trip);
+void reverseGoat(list<Goat> &trip);
 int main_menu();
 
 int main() {
@@ -52,7 +53,7 @@ int main() {
     
     // Goat Manager 3001 Engine
     int sel = main_menu();
-    while (sel != 5) {
+    while (sel != 7) {
         switch (sel) {
             case 1:
                 cout << "Adding a goat.\n";
@@ -71,6 +72,12 @@ int main() {
                 cin >> name;
                 find_goat(trip, name);
                 break;
+            case 5:
+                cout << "The size of your list is: ";
+                size(trip);
+                break;
+            case 6:
+                reverseGoat(trip);
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -88,11 +95,13 @@ int main_menu() {
     cout << "[2] Delete a goat\n";
     cout << "[3] List goats\n";
     cout << "[4] See if Goat exists\n";
-    cout << "[5] Quit\n";
+    cout << "[5] Find Size of List\n";
+    cout << "[6] Reverse Goats\n";
+    cout << "[7] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
-    while (choice < 1 || choice > 6) {
+    while (choice < 1 || choice > 8) {
         cout << "Invalid, again --> ";
         cin >> choice;
     }
@@ -161,10 +170,13 @@ void find_goat(list<Goat> trip, string name){
 }
 
 void size(list<Goat> trp){
-    int size = accumulate(trp.begin(),trp.end(),0);
+    int size = accumulate(trp.begin(),trp.end(),0,[](int total, const Goat gt){
+        return total + 1;
+    });
+
     cout<<size;
 }
         
-void reverseGoat(list<Goat> trip){
-    int 
+void reverseGoat(list<Goat> &trip){
+    reverse(trip.begin(),trip.end()); 
 }
