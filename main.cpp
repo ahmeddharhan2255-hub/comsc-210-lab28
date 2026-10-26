@@ -21,6 +21,7 @@ void size(list<Goat> trip);
 void reverseGoat(list<Goat> &trip);
 void oldestGoat(list<Goat> &trip);
 void youngestGoat(list<Goat> &trip);
+void allAdults(list<Goat> &trip);
     
 int main_menu();
 
@@ -56,7 +57,7 @@ int main() {
     
     // Goat Manager 3001 Engine
     int sel = main_menu();
-    while (sel != 9) {
+    while (sel != 12) {
         switch (sel) {
             case 1:
                 cout << "Adding a goat.\n";
@@ -87,6 +88,12 @@ int main() {
             case 8:
                 youngestGoat(trip);
                 break;
+            case 9:
+                allAdults(trip);
+            case 10:
+
+            case 11:
+
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -108,11 +115,14 @@ int main_menu() {
     cout << "[6] Reverse Goats\n";
     cout << "[7] Oldest Goat\n";
     cout << "[8] Youngest Goat\n";
-    cout << "[9] Quit\n";
+    cout << "[9] Check if all goats are adults\n";
+    cout << "[10]      \n";
+    cout << "[11]      \n";
+    cout << "[12] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
-    while (choice < 1 || choice > 9) {
+    while (choice < 1 || choice > 13) {
         cout << "Invalid, again --> ";
         cin >> choice;
     }
@@ -162,17 +172,12 @@ int select_goat(list<Goat> trp) {
 }
 
 void find_goat(list<Goat> trip, string name){
-    bool found = false;
+    auto it = find_if(trip.begin(), trip.end(),
+        [name](const Goat& gt) {
+            return gt.get_name() == name;
+        });
 
-    for (auto gt: trip){
-        if (gt.get_name() == name){
-            found = true;
-            break; 
-        }
-
-    }
-
-    if (found){
+    if (it != trip.end()){
         cout << name <<  " exists!" << endl;
     }
     else{
@@ -224,4 +229,8 @@ void youngestGoat(list<Goat> &trip){
 
     cout << "Youngest Goat Name: " << it->get_name() << endl;
     cout << "Youngest Goat Age: " << it->get_age() << endl;
+}
+
+void allAdults(list<Goat> &trip){
+    bool 
 }
