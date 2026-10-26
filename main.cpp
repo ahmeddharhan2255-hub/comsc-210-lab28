@@ -90,6 +90,7 @@ int main() {
                 break;
             case 9:
                 allAdults(trip);
+                break;
             case 10:
 
             case 11:
@@ -232,5 +233,16 @@ void youngestGoat(list<Goat> &trip){
 }
 
 void allAdults(list<Goat> &trip){
-    bool 
+    bool result = all_of(trip.begin(), trip.end(),
+        [](const Goat& gt){
+            return gt.get_age() >= 3;
+    });
+
+    if(result)
+        cout << "All goats are at least 3 years old" << endl;
+    else
+        cout << "Not all goats are adults" << endl;   
+
 }
+
+void noBabies(lis)
