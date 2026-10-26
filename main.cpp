@@ -157,4 +157,5 @@ void find_goat(list<Goat> trip, string name){
         cout << name << " doesn't exist" << endl;
     }
 }
+
         
