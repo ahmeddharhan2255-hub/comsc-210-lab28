@@ -7,6 +7,7 @@
 #include "Goat.h"
 #include <algorithm>
 #include <string>
+#include <numeric>
 using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25;
@@ -161,5 +162,9 @@ void find_goat(list<Goat> trip, string name){
 
 void size(list<Goat> trp){
     int size = accumulate(trp.begin(),trp.end(),0);
+    cout<<size;
 }
         
+void reverseGoat(list<Goat> trip){
+    int 
+}
