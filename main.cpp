@@ -16,6 +16,7 @@ void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
 void find_goat(list<Goat> trip, string name);
+void size(list<Goat> trip);
 int main_menu();
 
 int main() {
@@ -158,4 +159,7 @@ void find_goat(list<Goat> trip, string name){
     }
 }
 
+void size(list<Goat> trp){
+    int size = accumulate(trp.begin(),trp.end(),0);
+}
         
